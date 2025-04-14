@@ -22,6 +22,14 @@
       margin: 0;
       font-size: 2em;
     }
+    .logo-placeholder {
+      width: 80px;
+      height: 80px;
+      background-color: #0f0;
+      margin: 10px auto;
+      border-radius: 50%;
+      display: inline-block;
+    }
     .section {
       padding: 30px 20px;
       max-width: 800px;
@@ -35,12 +43,37 @@
     .service, .testimonial {
       margin-bottom: 15px;
     }
+    .gallery {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      margin-bottom: 30px;
+    }
     .gallery img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
+      transition: opacity 1s ease-in-out;
       border: 2px solid #0f0;
       border-radius: 8px;
-      margin: 10px 0;
+    }
+    .gallery-container {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item {
+      flex: 0 0 100%;
+      position: relative;
+    }
+    .service-description {
+      color: #fff;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
     }
     footer {
       text-align: center;
@@ -49,22 +82,46 @@
       color: #999;
     }
     .whatsapp {
-      display: inline-block;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
       background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .contact-button {
+      display: inline-block;
+      background-color: #0f0;
       color: white;
       padding: 10px 20px;
       border-radius: 25px;
       text-decoration: none;
-      font-weight: bold;
       margin-top: 10px;
+      font-weight: bold;
+    }
+    .icons-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .icon {
+      font-size: 30px;
+      margin: 0 10px;
+      color: #0f0;
     }
   </style>
 </head>
 <body>
+
   <header>
+    <div class="logo-placeholder"></div>
     <h1>EDFix - Elétrica e Manutenção</h1>
     <p>Ijui - Rio Grande do Sul</p>
-    <a class="whatsapp" href="https://wa.me/555599263337" target="_blank">Chamar no WhatsApp</a>
+    <a class="whatsapp" href="https://wa.me/555599263337" target="_blank">💬</a>
   </header>
 
   <div class="section">
@@ -74,21 +131,26 @@
     <div class="service">💡 Instalação de iluminação e automação</div>
     <div class="service">🔐 Interfones e fechaduras inteligentes</div>
     <div class="service">🛠️ Manutenção elétrica geral</div>
+    <div class="service">📡 Instalação de sistemas de alarme e câmeras</div>
+    <div class="service">🖥️ Automação de sistemas residenciais e industriais</div>
   </div>
 
   <div class="section">
     <h2>Portfólio</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/800x400?text=Instalacao+Painel+Eletrico" alt="Instalação de Painel Elétrico">
-      <img src="https://via.placeholder.com/800x400?text=Reparo+em+Portao" alt="Reparo em Portão">
-      <img src="https://via.placeholder.com/800x400?text=Troca+de+Disjuntor" alt="Troca de Disjuntor">
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/800x400?text=Instalacao+Painel+Eletrico" alt="Instalação de Painel Elétrico">
+        <div class="service-description">Já imaginou ter o controle da sua casa na palma da mão? Com automação e IoT, isso é possível com segurança e praticidade.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/800x400?text=Reparo+em+Portao" alt="Reparo em Portão Eletrônico">
+        <div class="service-description">Consertamos seu portão eletrônico com eficiência e qualidade, garantindo o funcionamento perfeito.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/800x400?text=Troca+de+Disjuntor" alt="Troca de Disjuntor">
+        <div class="service-description">A troca de disjuntores é essencial para manter a segurança elétrica de sua residência ou empresa.</div>
+      </div>
     </div>
-  </div>
-
-  <div class="section">
-    <h2>Depoimentos</h2>
-    <div class="testimonial">“Serviço rápido e bem feito! Recomendo.” – João M.</div>
-    <div class="testimonial">“Atendimento excelente, resolveu meu portão no mesmo dia.” – Carla S.</div>
   </div>
 
   <div class="section">
@@ -96,11 +158,34 @@
     <p>📍 Ijuí, Rio Grande do Sul</p>
     <p>📞 WhatsApp: +55 55 9926-3337</p>
     <p>🕐 Atendimento: Segunda a Sábado</p>
-    <a class="whatsapp" href="https://wa.me/555599263337" target="_blank">Falar agora</a>
+    <a class="contact-button" href="mailto:atendimento@edfix.com.br">📧 Enviar E-mail</a>
+  </div>
+
+  <div class="icons-container">
+    <a href="https://www.instagram.com" class="icon">📸</a>
+    <a href="https://www.facebook.com" class="icon">📘</a>
+    <!-- Placeholder for additional icons -->
   </div>
 
   <footer>
     © 2025 EDFix - Todos os direitos reservados
   </footer>
+
+  <script>
+    // Gallery carousel functionality
+    let currentIndex = 0;
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const totalItems = galleryItems.length;
+
+    function changeImage() {
+      galleryItems.forEach(item => item.style.display = 'none');
+      galleryItems[currentIndex].style.display = 'block';
+      currentIndex = (currentIndex + 1) % totalItems;
+    }
+
+    setInterval(changeImage, 4000);
+    changeImage();  // Initialize the first image
+  </script>
+
 </body>
 </html>
