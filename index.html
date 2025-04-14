@@ -1,191 +1,280 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EDFix - Elétrica e Manutenção</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #ddd;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #0f0;
-    }
-    header h1 {
-      color: #0f0;
-      margin: 0;
-      font-size: 2em;
-    }
-    .logo-placeholder {
-      width: 80px;
-      height: 80px;
-      background-color: #0f0;
-      margin: 10px auto;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .section {
-      padding: 30px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .section h2 {
-      color: #0f0;
-      border-bottom: 1px solid #0f0;
-      padding-bottom: 5px;
-    }
-    .service, .testimonial {
-      margin-bottom: 15px;
-    }
-    .gallery {
-      display: flex;
-      overflow: hidden;
-      width: 100%;
-      margin-bottom: 30px;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      transition: opacity 1s ease-in-out;
-      border: 2px solid #0f0;
-      border-radius: 8px;
-    }
-    .gallery-container {
-      display: flex;
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-    .gallery-item {
-      flex: 0 0 100%;
-      position: relative;
-    }
-    .service-description {
-      color: #fff;
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 5px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #999;
-    }
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      padding: 15px;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .contact-button {
-      display: inline-block;
-      background-color: #0f0;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .icons-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    .icon {
-      font-size: 30px;
-      margin: 0 10px;
-      color: #0f0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDFix - Elétrica e Manutenção</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos personalizados */
+        :root {
+            --cor-primaria: #0056b3; /* Azul EDFix */
+            --cor-destaque: #ffc107; /* Amarelo */
+        }
+        
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        /* Espaço reservado para logo */
+        .logo-placeholder {
+            width: 150px;
+            height: 50px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        /* Carrossel */
+        .carousel-item {
+            height: 500px;
+            background-color: #000;
+        }
+        
+        .carousel-item img {
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .carousel-caption {
+            bottom: 30%;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        /* Botões flutuantes */
+        .float-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-btn, .email-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .email-btn {
+            background: #EA4335;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover, .email-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Ícones sociais (placeholders) */
+        .social-placeholder {
+            width: 40px;
+            height: 40px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <div class="logo-placeholder">LOGO EDFix</div>
+                <a class="navbar-brand" href="#">EDFix</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <span class="social-placeholder">FB</span>
+                    <span class="social-placeholder">IG</span>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <header>
-    <div class="logo-placeholder"></div>
-    <h1>EDFix - Elétrica e Manutenção</h1>
-    <p>Ijui - Rio Grande do Sul</p>
-    <a class="whatsapp" href="https://wa.me/555599263337" target="_blank">💬</a>
-  </header>
-
-  <div class="section">
-    <h2>Serviços</h2>
-    <div class="service">🔌 Elétrica residencial e comercial</div>
-    <div class="service">🔧 Manutenção de portões eletrônicos</div>
-    <div class="service">💡 Instalação de iluminação e automação</div>
-    <div class="service">🔐 Interfones e fechaduras inteligentes</div>
-    <div class="service">🛠️ Manutenção elétrica geral</div>
-    <div class="service">📡 Instalação de sistemas de alarme e câmeras</div>
-    <div class="service">🖥️ Automação de sistemas residenciais e industriais</div>
-  </div>
-
-  <div class="section">
-    <h2>Portfólio</h2>
-    <div class="gallery-container">
-      <div class="gallery-item">
-        <img src="https://via.placeholder.com/800x400?text=Instalacao+Painel+Eletrico" alt="Instalação de Painel Elétrico">
-        <div class="service-description">Já imaginou ter o controle da sua casa na palma da mão? Com automação e IoT, isso é possível com segurança e praticidade.</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://via.placeholder.com/800x400?text=Reparo+em+Portao" alt="Reparo em Portão Eletrônico">
-        <div class="service-description">Consertamos seu portão eletrônico com eficiência e qualidade, garantindo o funcionamento perfeito.</div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://via.placeholder.com/800x400?text=Troca+de+Disjuntor" alt="Troca de Disjuntor">
-        <div class="service-description">A troca de disjuntores é essencial para manter a segurança elétrica de sua residência ou empresa.</div>
-      </div>
+    <!-- Carrossel -->
+    <div id="servicosCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active" data-bs-interval="4000">
+                <img src="https://via.placeholder.com/1920x500?text=Elétrica+Residencial" class="d-block w-100" alt="Elétrica Residencial">
+                <div class="carousel-caption">
+                    <h3>Elétrica Residencial</h3>
+                    <p>Soluções completas para sua casa, com segurança e garantia.</p>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="https://via.placeholder.com/1920x500?text=Automação+Residencial" class="d-block w-100" alt="Automação Residencial">
+                <div class="carousel-caption">
+                    <h3>Automação Residencial</h3>
+                    <p>Controle sua casa na palma da mão com IoT, segurança e praticidade.</p>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item" data-bs-interval="4000">
+                <img src="https://via.placeholder.com/1920x500?text=Manutenção+de+Portões" class="d-block w-100" alt="Manutenção de Portões">
+                <div class="carousel-caption">
+                    <h3>Manutenção de Portões</h3>
+                    <p>Reparo e instalação de portões eletrônicos com agilidade.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#servicosCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#servicosCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>Contato</h2>
-    <p>📍 Ijuí, Rio Grande do Sul</p>
-    <p>📞 WhatsApp: +55 55 9926-3337</p>
-    <p>🕐 Atendimento: Segunda a Sábado</p>
-    <a class="contact-button" href="mailto:atendimento@edfix.com.br">📧 Enviar E-mail</a>
-  </div>
+    <!-- Seção Serviços -->
+    <section id="servicos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Nossos Serviços</h2>
+            <div class="row">
+                <!-- Serviço 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-bolt fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title">Elétrica Residencial</h5>
+                            <p class="card-text">Instalações, reparos e manutenção em toda sua casa.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Serviço 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-robot fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title">Automação Residencial</h5>
+                            <p class="card-text">Controle de iluminação, câmeras e dispositivos inteligentes.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Serviço 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-door-open fa-3x mb-3 text-warning"></i>
+                            <h5 class="card-title">Portões Eletrônicos</h5>
+                            <p class="card-text">Instalação e manutenção de portões automáticos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="icons-container">
-    <a href="https://www.instagram.com" class="icon">📸</a>
-    <a href="https://www.facebook.com" class="icon">📘</a>
-    <!-- Placeholder for additional icons -->
-  </div>
+    <!-- Seção Contato -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Contato</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Entre em Contato</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Seu Nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Seu E-mail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="3" placeholder="Sua Mensagem" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Onde Estamos</h5>
+                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i> Ijuí, Rio Grande do Sul</p>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.123456789012!2d-53.987654321!3d-28.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDA3JzI0LjQiUyA1M8KwNTknMTUuNiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    © 2025 EDFix - Todos os direitos reservados
-  </footer>
+    <!-- Botões Flutuantes -->
+    <div class="float-buttons">
+        <a href="https://wa.me/5555992633337" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp fa-2x"></i>
+        </a>
+        <a href="mailto:atendimento@edfix.com.br" class="email-btn">
+            <i class="fas fa-envelope fa-2x"></i>
+        </a>
+    </div>
 
-  <script>
-    // Gallery carousel functionality
-    let currentIndex = 0;
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const totalItems = galleryItems.length;
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2023 EDFix - Elétrica e Manutenção. Todos os direitos reservados.</p>
+            <div class="mt-2">
+                <span class="social-placeholder text-dark me-2">FB</span>
+                <span class="social-placeholder text-dark">IG</span>
+            </div>
+        </div>
+    </footer>
 
-    function changeImage() {
-      galleryItems.forEach(item => item.style.display = 'none');
-      galleryItems[currentIndex].style.display = 'block';
-      currentIndex = (currentIndex + 1) % totalItems;
-    }
-
-    setInterval(changeImage, 4000);
-    changeImage();  // Initialize the first image
-  </script>
-
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script do WhatsApp -->
+    <script>
+        // Atualize este número para o seu WhatsApp
+        const whatsappNumber = "5555992633337";
+        document.querySelector('.whatsapp-btn').href = `https://wa.me/${whatsappNumber}`;
+    </script>
 </body>
 </html>
