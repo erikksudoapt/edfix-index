@@ -3,46 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDFix - Elétrica e Manutenção</title>
+    <title>EDFix - Tecnologia e Automação no Noroeste Gaúcho</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome (Ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* Estilos personalizados */
         :root {
-            --cor-primaria: #0056b3; /* Azul EDFix */
-            --cor-destaque: #ffc107; /* Amarelo */
+            --cor-primaria: #0056b3;
+            --cor-secundaria: #003366;
+            --cor-destaque: #ffc107;
+            --cor-texto: #333;
+            --cor-fundo: #f8f9fa;
         }
         
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+            overflow-x: hidden;
         }
         
-        /* Espaço reservado para logo */
-   
-<div class="d-flex align-items-center">
-  <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Logo%20PNG.png" alt="Logo EDFix" class="logo me-2" width="40">
-  <a class="navbar-brand mb-0 h1" href="#">EDFix</a>
-</div>
-
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: white !important;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--cor-primaria) !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            color: var(--cor-texto) !important;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--cor-destaque);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
         
         /* Carrossel */
         .carousel-item {
-            height: 500px;
+            height: 80vh;
+            min-height: 500px;
             background-color: #000;
         }
         
         .carousel-item img {
             object-fit: cover;
-            opacity: 0.7;
+            opacity: 0.8;
+            height: 100%;
+            width: 100%;
         }
         
         .carousel-caption {
             bottom: 30%;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .carousel-indicators button {
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
+            margin: 0 8px !important;
+        }
+        
+        /* Seções */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--cor-destaque);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        /* Cards de serviços */
+        .service-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--cor-destaque);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+        
+        /* Sobre nós */
+        #sobre {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Paineleletrico005.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .about-img {
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .about-img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Botões */
+        .btn-primary {
+            background-color: var(--cor-primaria);
+            border-color: var(--cor-primaria);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--cor-secundaria);
+            border-color: var(--cor-secundaria);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline-primary {
+            color: var(--cor-primaria);
+            border-color: var(--cor-primaria);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--cor-primaria);
+            color: white;
+            transform: translateY(-3px);
         }
         
         /* Botões flutuantes */
@@ -51,8 +217,10 @@
             bottom: 30px;
             right: 30px;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .whatsapp-btn, .email-btn {
             width: 60px;
             height: 60px;
@@ -60,44 +228,271 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
         .whatsapp-btn {
             background: #25D366;
             color: white;
         }
-        
+
         .email-btn {
             background: #EA4335;
             color: white;
         }
-        
-        .whatsapp-btn:hover, .email-btn:hover {
+
+        .float-buttons a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .float-buttons a:hover::after {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+
+        .float-buttons a:hover {
             transform: scale(1.1);
         }
+
+        /* Tooltip para botões flutuantes */
+        .tooltip-text {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .float-buttons a:hover .tooltip-text {
+            opacity: 1;
+            visibility: visible;
+            right: 80px;
+        }
+
+        @media (max-width: 576px) {
+            .float-buttons a:hover .tooltip-text {
+                right: 60px;
+                font-size: 12px;
+            }
+        }
         
-        /* Ícones sociais (placeholders) */
-        .social-placeholder {
+        /* Portfolio Overlay */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay div {
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .portfolio-overlay h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay p {
+            margin-bottom: 15px;
+        }
+
+        .portfolio-overlay .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            color: var(--cor-destaque);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
             width: 40px;
-            height: 40px;
-            background: #f0f0f0;
-            border-radius: 50%;
+            height: 2px;
+            background: var(--cor-destaque);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0 5px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--cor-destaque);
+            color: #333;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Efeito parallax */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .carousel-item {
+                height: 60vh;
+            }
+            
+            .carousel-caption {
+                bottom: 20%;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-item {
+                height: 50vh;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.5rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .carousel-item {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .carousel-caption {
+                bottom: 10%;
+                padding: 15px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                width: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <div class="d-flex align-items-center">
-                <div class="logo-placeholder">LOGO EDFix</div>
+                <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/logo.png" alt="EDFix Tecnologia e Automação Logo" class="logo me-2" width="40">
                 <a class="navbar-brand" href="#">EDFix</a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -106,135 +501,379 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#servicos">Serviços</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfólio</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#contato">Contato</a>
                     </li>
                 </ul>
-                <div class="ms-3">
-                    <span class="social-placeholder">FB</span>
-                    <span class="social-placeholder">IG</span>
+                <div class="ms-3 d-flex">
+                    <a href="https://www.facebook.com" class="nav-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" class="nav-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com" class="nav-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
     </nav>
 
-   <!-- Carrossel -->
-<div id="servicosCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="2"></button>
-        <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="3"></button>
-        <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="4"></button>
-    </div>
-    <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active" data-bs-interval="4000">
-            <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Camera003.png" class="d-block w-100" alt="Câmeras de Segurança">
-            <div class="carousel-caption">
-                <h3>Câmeras de Segurança</h3>
-                <p>Instalação e manutenção de sistemas de segurança.</p>
+    <!-- Carrossel -->
+    <section id="home">
+        <div id="servicosCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#servicosCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
             </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="carousel-item" data-bs-interval="4000">
-            <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/CasaAuto001.jpg" class="d-block w-100" alt="Automação Residencial">
-            <div class="carousel-caption">
-                <h3>Automação Residencial</h3>
-                <p>Controle inteligente de sua casa, com conforto e segurança.</p>
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active" data-bs-interval="5000">
+                    <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Camera003.png" class="d-block w-100" alt="Sistema de câmeras de segurança instalado pela EDFix">
+                    <div class="carousel-caption d-none d-md-block animate__animated animate__fadeIn">
+                        <h3 class="display-4">Câmeras de Segurança</h3>
+                        <p class="lead">Sistemas completos de monitoramento e vigilância para sua segurança</p>
+                        <a href="#servicos" class="btn btn-primary btn-lg mt-3">Saiba Mais</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/CasaAuto001.jpg" class="d-block w-100" alt="Sistema de automação residencial instalado pela EDFix">
+                    <div class="carousel-caption d-none d-md-block animate__animated animate__fadeIn">
+                        <h3 class="display-4">Automação Residencial</h3>
+                        <p class="lead">Torne sua casa inteligente com nossos sistemas de automação</p>
+                        <a href="#servicos" class="btn btn-primary btn-lg mt-3">Conheça Nossas Soluções</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Fechadura004.jpg" class="d-block w-100" alt="Fechadura eletrônica instalada pela EDFix">
+                    <div class="carousel-caption d-none d-md-block animate__animated animate__fadeIn">
+                        <h3 class="display-4">Fechaduras Eletrônicas</h3>
+                        <p class="lead">Segurança e praticidade com tecnologia de ponta</p>
+                        <a href="#servicos" class="btn btn-primary btn-lg mt-3">Mais Detalhes</a>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Paineleletrico005.jpg" class="d-block w-100" alt="Painel elétrico instalado pela EDFix">
+                    <div class="carousel-caption d-none d-md-block animate__animated animate__fadeIn">
+                        <h3 class="display-4">Painéis Elétricos</h3>
+                        <p class="lead">Instalação e manutenção profissional de sistemas elétricos</p>
+                        <a href="#servicos" class="btn btn-primary btn-lg mt-3">Nossos Serviços</a>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Portao002.png" class="d-block w-100" alt="Portão eletrônico instalado pela EDFix">
+                    <div class="carousel-caption d-none d-md-block animate__animated animate__fadeIn">
+                        <h3 class="display-4">Portões Eletrônicos</h3>
+                        <p class="lead">Soluções completas para automação de portões</p>
+                        <a href="#servicos" class="btn btn-primary btn-lg mt-3">Entre em Contato</a>
+                    </div>
+                </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#servicosCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#servicosCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
         </div>
-        <!-- Slide 3 -->
-        <div class="carousel-item" data-bs-interval="4000">
-            <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Fechadura004.jpg" class="d-block w-100" alt="Fechaduras Eletrônicas">
-            <div class="carousel-caption">
-                <h3>Fechaduras Eletrônicas</h3>
-                <p>Instalação e manutenção de fechaduras com tecnologia de ponta.</p>
-            </div>
-        </div>
-        <!-- Slide 4 -->
-        <div class="carousel-item" data-bs-interval="4000">
-            <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Paineleletrico005.jpg" class="d-block w-100" alt="Painéis Elétricos">
-            <div class="carousel-caption">
-                <h3>Painéis Elétricos</h3>
-                <p>Instalação, manutenção e reparos em sistemas elétricos.</p>
-            </div>
-        </div>
-        <!-- Slide 5 -->
-        <div class="carousel-item" data-bs-interval="4000">
-            <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Portao002.png" class="d-block w-100" alt="Portões Eletrônicos">
-            <div class="carousel-caption">
-                <h3>Portões Eletrônicos</h3>
-                <p>Manutenção e instalação de portões automáticos e sistemas de segurança.</p>
-            </div>
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#servicosCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#servicosCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
-</div>
-
+    </section>
 
     <!-- Seção Serviços -->
-    <section id="servicos" class="py-5 bg-light">
+    <section id="servicos" class="bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Nossos Serviços</h2>
-            <div class="row">
+            <div class="section-title">
+                <h2 class="display-5 fw-bold">Nossos Serviços</h2>
+                <p class="lead">Soluções tecnológicas completas para residências e empresas</p>
+            </div>
+            <div class="row g-4">
                 <!-- Serviço 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-bolt fa-3x mb-3 text-warning"></i>
-                            <h5 class="card-title">Elétrica Residencial</h5>
-                            <p class="card-text">Instalações, reparos e manutenção em toda sua casa.</p>
+                <div class="col-md-4">
+                    <div class="service-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-bolt service-icon"></i>
+                            <h4 class="card-title fw-bold">Elétrica Residencial</h4>
+                            <p class="card-text">Instalações, reparos e manutenção elétrica completa para sua residência, com segurança e garantia.</p>
+                            <a href="#contato" class="btn btn-outline-primary">Solicitar Orçamento</a>
                         </div>
                     </div>
                 </div>
                 <!-- Serviço 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-robot fa-3x mb-3 text-warning"></i>
-                            <h5 class="card-title">Automação Residencial</h5>
-                            <p class="card-text">Controle de iluminação, câmeras e dispositivos inteligentes.</p>
+                <div class="col-md-4">
+                    <div class="service-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-robot service-icon"></i>
+                            <h4 class="card-title fw-bold">Automação Residencial</h4>
+                            <p class="card-text">Sistemas inteligentes para controle de iluminação, câmeras, temperatura e dispositivos conectados.</p>
+                            <a href="#contato" class="btn btn-outline-primary">Modernize Sua Casa</a>
                         </div>
                     </div>
                 </div>
                 <!-- Serviço 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-door-open fa-3x mb-3 text-warning"></i>
-                            <h5 class="card-title">Portões Eletrônicos</h5>
-                            <p class="card-text">Instalação e manutenção de portões automáticos.</p>
+                <div class="col-md-4">
+                    <div class="service-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-door-open service-icon"></i>
+                            <h4 class="card-title fw-bold">Portões Eletrônicos</h4>
+                            <p class="card-text">Instalação e manutenção de portões automáticos com os melhores equipamentos do mercado.</p>
+                            <a href="#contato" class="btn btn-outline-primary">Mais Segurança</a>
                         </div>
                     </div>
                 </div>
                 <!-- Serviço 4 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-cogs fa-3x mb-3 text-warning"></i>
-                            <h5 class="card-title">Reparos Eletrônicos</h5>
-                            <p class="card-text">Reparo de câmeras, porteiros e outros dispositivos.</p>
+                <div class="col-md-4">
+                    <div class="service-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-camera service-icon"></i>
+                            <h4 class="card-title fw-bold">Sistemas de Segurança</h4>
+                            <p class="card-text">Câmeras de vigilância, alarmes e monitoramento 24h para proteger o que é mais importante.</p>
+                            <a href="#contato" class="btn btn-outline-primary">Proteja Seu Patrimônio</a>
                         </div>
                     </div>
                 </div>
                 <!-- Serviço 5 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-lightbulb fa-3x mb-3 text-warning"></i>
-                            <h5 class="card-title">Instalação de Luminárias</h5>
-                            <p class="card-text">Instalação de luminárias e sistemas de iluminação de alta qualidade.</p>
+                <div class="col-md-4">
+                    <div class="service-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-lightbulb service-icon"></i>
+                            <h4 class="card-title fw-bold">Iluminação Inteligente</h4>
+                            <p class="card-text">Sistemas de iluminação automatizados que combinam eficiência energética e design.</p>
+                            <a href="#contato" class="btn btn-outline-primary">Ilumine com Tecnologia</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Serviço 6 -->
+                <div class="col-md-4">
+                    <div class="service-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-lock service-icon"></i>
+                            <h4 class="card-title fw-bold">Fechaduras Eletrônicas</h4>
+                            <p class="card-text">Sistemas de acesso modernos com biometria, senha ou controle por aplicativo.</p>
+                            <a href="#contato" class="btn btn-outline-primary">Tranquilidade Digital</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Nós -->
+    <section id="sobre" class="parallax">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Logo%20PNG.png" alt="Equipe EDFix especializada em tecnologia e automação" class="img-fluid about-img shadow-lg">
+                </div>
+                <div class="col-lg-6">
+                    <div class="ps-lg-5">
+                        <h2 class="display-5 fw-bold mb-4">Sobre a EDFix</h2>
+                        <p class="lead">Sua parceira em tecnologia e automação no Noroeste Gaúcho</p>
+                        <p>A EDFix é uma empresa de tecnologia especializada em soluções elétricas e de automação para residências e empresas. Atuamos no Noroeste Gaúcho com excelência e comprometimento, trazendo as melhores soluções tecnológicas para nossos clientes.</p>
+                        <p>Nossa equipe é formada por profissionais qualificados e certificados, sempre atualizados com as últimas tendências do mercado. Combinamos expertise técnica com atendimento personalizado para oferecer a melhor experiência aos nossos clientes.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2 fs-4"></i>
+                                    <span>Profissionais Certificados</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2 fs-4"></i>
+                                    <span>Atendimento Rápido</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2 fs-4"></i>
+                                    <span>Garantia nos Serviços</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2 fs-4"></i>
+                                    <span>Soluções Personalizadas</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#contato" class="btn btn-primary mt-3">Fale Conosco</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Portfólio -->
+    <section id="portfolio" class="bg-white">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="display-5 fw-bold">Nosso Portfólio</h2>
+                <p class="lead">Alguns dos nossos trabalhos realizados</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="portfolio-item overflow-hidden rounded-4 shadow-lg">
+                        <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Camera003.png" alt="Sistema de câmeras instalado pela EDFix" class="img-fluid w-100">
+                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-center text-white p-4">
+                                <h4>Instalação de Câmeras</h4>
+                                <p>Sistema completo de vigilância</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item overflow-hidden rounded-4 shadow-lg">
+                        <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/CasaAuto001.jpg" alt="Projeto de automação residencial da EDFix" class="img-fluid w-100">
+                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-center text-white p-4">
+                                <h4>Automação Residencial</h4>
+                                <p>Casa inteligente controlada por voz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item overflow-hidden rounded-4 shadow-lg">
+                        <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Fechadura004.jpg" alt="Fechadura eletrônica instalada pela EDFix" class="img-fluid w-100">
+                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-center text-white p-4">
+                                <h4>Fechadura Eletrônica</h4>
+                                <p>Sistema de acesso biométrico</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item overflow-hidden rounded-4 shadow-lg">
+                        <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Paineleletrico005.jpg" alt="Painel elétrico instalado pela EDFix" class="img-fluid w-100">
+                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-center text-white p-4">
+                                <h4>Painel Elétrico</h4>
+                                <p>Instalação profissional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item overflow-hidden rounded-4 shadow-lg">
+                        <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Portao002.png" alt="Portão eletrônico automatizado pela EDFix" class="img-fluid w-100">
+                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-center text-white p-4">
+                                <h4>Portão Eletrônico</h4>
+                                <p>Automação residencial</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item overflow-hidden rounded-4 shadow-lg">
+                        <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/Logo%20PNG.png" alt="Projeto completo de automação pela EDFix" class="img-fluid w-100">
+                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-center text-white p-4">
+                                <h4>Projeto Completo</h4>
+                                <p>Integração de sistemas</p>
+                                <a href="#contato" class="btn btn-sm btn-primary">Solicite Seu Projeto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Entre em Contato</h2>
+                    <p class="lead mb-5">Estamos prontos para atender suas necessidades em tecnologia e automação</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Informações de Contato</h4>
+                            <div class="d-flex mb-4">
+                                <i class="fas fa-map-marker-alt text-primary me-3 mt-1 fs-5"></i>
+                                <div>
+                                    <h5 class="mb-1">Endereço</h5>
+                                    <p class="mb-0">Noroeste Gaúcho, Rio Grande do Sul</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <i class="fas fa-phone-alt text-primary me-3 mt-1 fs-5"></i>
+                                <div>
+                                    <h5 class="mb-1">Telefone</h5>
+                                    <p class="mb-0">+55 (55) 9926-3337</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <i class="fas fa-envelope text-primary me-3 mt-1 fs-5"></i>
+                                <div>
+                                    <h5 class="mb-1">E-mail</h5>
+                                    <p class="mb-0">contato@edfix.com.br</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <i class="fas fa-clock text-primary me-3 mt-1 fs-5"></i>
+                                <div>
+                                    <h5 class="mb-1">Horário de Atendimento</h5>
+                                    <p class="mb-0">Segunda a Sábado: 8h às 18h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Envie uma Mensagem</h4>
+                            <form id="contactForm" action="https://formsubmit.co/seu-email@edfix.com.br" method="POST">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_next" value="https://edfix.com.br/obrigado.html">
+                                
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="nome" placeholder="Seu Nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" name="email" placeholder="Seu E-mail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" name="telefone" placeholder="Seu Telefone">
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select" name="servico" required>
+                                        <option value="" selected disabled>Selecione o Serviço</option>
+                                        <option value="Elétrica Residencial">Elétrica Residencial</option>
+                                        <option value="Automação Residencial">Automação Residencial</option>
+                                        <option value="Portões Eletrônicos">Portões Eletrônicos</option>
+                                        <option value="Câmeras de Segurança">Câmeras de Segurança</option>
+                                        <option value="Fechaduras Eletrônicas">Fechaduras Eletrônicas</option>
+                                        <option value="Outros">Outros Serviços</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="4" name="mensagem" placeholder="Sua Mensagem" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Enviar Mensagem</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -244,23 +883,160 @@
 
     <!-- Botões flutuantes -->
     <div class="float-buttons">
-        <a href="https://wa.me/551234567890" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/555599263337" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
             <i class="fab fa-whatsapp"></i>
+            <span class="tooltip-text">WhatsApp</span>
         </a>
-        <a href="mailto:contato@edfix.com.br" class="email-btn" target="_blank">
+        <a href="mailto:contato@edfix.com.br" class="email-btn" target="_blank" rel="noopener noreferrer" aria-label="Enviar e-mail">
             <i class="fas fa-envelope"></i>
+            <span class="tooltip-text">E-mail</span>
         </a>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-3">
-        <div class="container text-center">
-            <p>&copy; 2025 EDFix. Todos os direitos reservados.</p>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://raw.githubusercontent.com/erikksudoapt/edfix-media/main/logo.png" alt="EDFix Tecnologia e Automação Logo" class="footer-logo">
+                    <p class="mt-2">Soluções em tecnologia e automação para residências e empresas no Noroeste Gaúcho.</p>
+                    <div class="social-icons mt-3">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Links</h5>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#servicos">Serviços</a></li>
+                            <li><a href="#sobre">Sobre Nós</a></li>
+                            <li><a href="#portfolio">Portfólio</a></li>
+                            <li><a href="#contato">Contato</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Serviços</h5>
+                        <ul>
+                            <li><a href="#servicos">Elétrica Residencial</a></li>
+                            <li><a href="#servicos">Automação</a></li>
+                            <li><a href="#servicos">Portões Eletrônicos</a></li>
+                            <li><a href="#servicos">Câmeras de Segurança</a></li>
+                            <li><a href="#servicos">Fechaduras Inteligentes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h5>Contato</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Noroeste Gaúcho, RS</li>
+                            <li><i class="fas fa-phone-alt me-2"></i> (55) 9926-3337</li>
+                            <li><i class="fas fa-envelope me-2"></i> contato@edfix.com.br</li>
+                            <li><i class="fas fa-clock me-2"></i> Seg-Sáb: 8h-18h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <p class="mb-0">&copy; 2025 EDFix Tecnologia e Automação. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                } else {
+                    console.warn(`Target element ${targetId} not found`);
+                }
+            });
+        });
+        
+        // Form validation
+        function validateForm() {
+            const form = document.getElementById('contactForm');
+            const name = form.querySelector('input[name="nome"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const service = form.querySelector('select[name="servico"]').value;
+            
+            if (!name || !email || !service) {
+                alert("Por favor, preencha todos os campos obrigatórios!");
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Initialize form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            if (!validateForm()) {
+                e.preventDefault();
+            }
+        });
+        
+        // Animation on scroll with debounce
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+        
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .about-img, .portfolio-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', debounce(animateOnScroll, 100));
+        window.addEventListener('load', animateOnScroll);
+    </script>
 </body>
 </html>
