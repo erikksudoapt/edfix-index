@@ -914,7 +914,11 @@
                 </div>
             </div>
             <div class="copyright text-center">
-                <p class="mb-0">&copy; 2025 EDFix Tecnologia e Automação. Todos os direitos reservados.</p>
+<p class="mb-0">&copy; <span id="ano"></span> EDFix Tecnologia e Automação. Todos os direitos reservados.</p>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+</script>
             </div>
         </div>
     </footer>
